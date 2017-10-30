@@ -14,10 +14,10 @@ class ComponentR(Resource):
     def post(self, c_type, c_id):
         check = None
         if c_type in rear_types:
-            print "REAR TYPE"
+            #print "REAR TYPE"
             new_comp = RearComponent(c_type, c_id)
         elif c_type in head_types:
-            print "HEAD TYPE"
+            #print "HEAD TYPE"
             new_comp = HeadComponent(c_type, c_id)
         else:
             return "Could Not find type", 400
@@ -137,15 +137,15 @@ class TestReportR(Resource):
         parser.add_argument('file', type=str)
         parser.add_argument('timestamp', type=str)
         parser.add_argument('failed', type=bool)
-        print "hi"
+        #print "hi"
         comp = check_component(c_id, c_type)
         if comp:
-            print "hello"
+            #print "hello"
             # Create Test Report
             tr = check_test(tr_type, tr_id)
             if tr:
                 args = parser.parse_args()
-                print args['file']
+                #print args['file']
                 tr.file = args['file']
                 tr.timestamp = datetime.datetime.strptime(args['timestamp'] , "%Y-%m-%d %H:%M:%S.%f")
                 tr.failed = args['failed']
